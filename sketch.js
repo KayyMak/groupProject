@@ -1,4 +1,4 @@
-let projectile = [];
+let projectileArray = [];
 
 let xPos = 0;
 let yPos = 350;
@@ -31,7 +31,7 @@ function setup(){
 
     for (let i = 0; i < 100; i++) {
         let temp = new Projectile(random(0, 500), -25, random(25, 50));
-        projectile.push(temp);
+        projectileArray.push(temp);
     }
  
  }
@@ -43,7 +43,6 @@ function setup(){
     rect(xPos, yPos, 50);
     
 
-    
     if (keyIsDown(LEFT_ARROW) || (keyIsDown(65))) { // wAsd
         if(xPos < 0){
             xPos = 0;
@@ -62,7 +61,7 @@ function setup(){
             yPos = 0;
             
         }
-        yPos += 3;
+        
     }
     if (keyIsDown(DOWN_ARROW) || (keyIsDown(83))) { // waSd 
         // if trying to past barrier, set yPos to 250
@@ -73,20 +72,14 @@ function setup(){
         yPos += 3;
     }
 
-    for (let i = 0; i < ballArray.length; i++) {
-        fill(ballArray[i].redValue, ballArray[i].greenValue, ballArray[i].blueValue);
-        ellipse(ballArray[i].xPos, ballArray[i].yPos, 50, 50);
- 
- 
-        ballArray[i].yPos += ballArray[i].speedValue;
- 
- 
-        if (ballArray[i].yPos > 525) {
-            ballArray[i].yPos = -25;
-        }
- 
-        
+    for (let i = 0; i < projectileArray.length; i++) {
+        fill(projectileArray[i].redValue, projectileArray[i].greenValue, projectileArray[i].blueValue);
+        ellipse(projectileArray[i].XPos, projectileArray[i].YPos, 50, 50);
 
-    
+        projectileArray[i].YPos += projectileArray[i].speedValue;
+
+        if (projectileArray[i].YPos > 525) {
+            projectileArray[i].YPos = -25;
+        }
  }
 }
